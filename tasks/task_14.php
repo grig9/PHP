@@ -38,13 +38,27 @@
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
+
+                                    <?php if(isset($_SESSION["username"])): ?>
+                                        <div class="alert alert-success fade show" role="alert">
+                                            Вы авторизированы! 
+                                        </div>  
+                                    <?php endif ;?>
+
+                                    <?php if(!isset($_SESSION["username"]) and !isset($_SESSION["danger"])): ?>
+                                        <div class="alert alert-info fade show" role="alert">
+                                            Вы не авторизированы! Введите логин и пароль
+                                        </div>  
+                                    <?php endif ;?>
+
                                     <?php if(isset($_SESSION["danger"])): ?>
                                         <div class="alert alert-danger fade show" role="alert">
                                             <?php echo $_SESSION["danger"];
                                                   unset($_SESSION["danger"]);
                                             ;?>
-                                        </div>
+                                        </div> 
                                     <?php endif ;?>
+
                                     <form action="task_14_handler.php" method="post">
                                         <label class="form-label" for="simpleinput">Email</label>
                                         <input type="text" name="email" id="simpleinput" class="form-control">

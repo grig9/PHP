@@ -38,9 +38,9 @@
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
-                                    <?php if(isset($_SESSION["success"])): ?>
+                                    <?php if(isset($_SESSION["username"])): ?>
                                         <div class="alert alert-success fade show" role="alert">
-                                            Здравствуйте, <?php echo $_SESSION["success"] ;?>.
+                                            Здравствуйте, <?php echo $_SESSION["username"] ;?>.
                                         </div>
                                     <?php endif ;?>
 
