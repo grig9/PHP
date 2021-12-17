@@ -1,3 +1,11 @@
+<?php
+    include "connect_db.php";
+    $sql = "SELECT * FROM images";
+    $staitment = $pdo->prepare($sql);
+    $staitment ->execute();
+    $images = $staitment->fetchAll(PDO::FETCH_ASSOC);
+;?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +32,7 @@
                     <div id="panel-1" class="panel">
                         <div class="panel-hdr">
                             <h2>
-                                Задание
+                                Задание 16
                             </h2>
                             <div class="panel-toolbar">
                                 <button class="btn btn-panel waves-effect waves-themed" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
@@ -35,12 +43,11 @@
                             <div class="panel-content">
                                 <div class="panel-content">
                                     <div class="form-group">
-                                        <form action="">
-                                            <div class="form-group">
-                                                <label class="form-label" for="simpleinput">Image</label>
-                                            <input type="file" id="simpleinput" class="form-control">
-                                            </div>
-                                            <button class="btn btn-success mt-3">Submit</button>
+                                        <form enctype="multipart/form-data" action="task_16_handler.php" method="post">
+                                            <label class="form-label" for="images">Images</label>
+                                            <input type="file" name="image" id="images" class="form-control" multiple required>
+
+                                            <button type="submit" class="btn btn-success mt-3">Загрузить</button>
                                         </form>
                                     </div>
                                 </div>
@@ -64,17 +71,11 @@
                             <div class="panel-content">
                                 <div class="panel-content image-gallery">
                                     <div class="row">
-                                        <div class="col-md-3 image">
-                                            <img src="img/demo/gallery/1.jpg">
-                                        </div>
-
-                                        <div class="col-md-3 image">
-                                            <img src="img/demo/gallery/2.jpg">
-                                        </div>
-
-                                        <div class="col-md-3 image">
-                                            <img src="img/demo/gallery/3.jpg">
-                                        </div>
+                                        <?php foreach($images as $image): ?>
+                                            <div class="col-md-3 image">
+                                                <img src="./images/<?php echo $image["image"] ;?>" alt="some image">
+                                             </div>
+                                        <?php endforeach ;?>
                                     </div>
                                 </div>
                             </div>
