@@ -73,8 +73,15 @@
                                     <div class="row">
                                         <?php foreach($images as $image): ?>
                                             <div class="col-md-3 image">
-                                                <img src="./images/<?php echo $image["image"] ;?>" alt="some image" width="300px">
-                                             </div>
+                                                <img src="./images/<?php echo $image["image"];?>" alt="some image" width="300px">
+                                                <a class="btn btn-danger" 
+                                                   href="./task_17_handler.php?id=<?php echo $image["id"] .'&image='. $image["image"];?>"
+                                                   onclick="confirm('Вы уверены?');">
+                                                   Удалить
+                                                </a>
+                                            </div>
+
+                                            
                                         <?php endforeach ;?>
                                     </div>
                                 </div>

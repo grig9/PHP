@@ -1,5 +1,4 @@
 <?php
-
   for($i = 0; $i < count($_FILES["image"]["name"]); $i++) {
     upload_image(
       $_FILES["image"]["name"][$i], 
