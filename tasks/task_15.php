@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+;?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +27,7 @@
                 <div id="panel-1" class="panel">
                     <div class="panel-hdr">
                         <h2>
-                            Задание
+                            Задание 15
                         </h2>
                         <div class="panel-toolbar">
                             <button class="btn btn-panel waves-effect waves-themed" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
@@ -34,10 +38,15 @@
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
-                                    <div class="alert alert-success fade show" role="alert">
-                                        Здравствуйте, ИМЯ_ПОЛЬЗОВАТЕЛЯ.
-                                    </div>
-                                    <a href="#" class="btn btn-info">Выйти</a>
+                                    <?php if(isset($_SESSION["success"])): ?>
+                                        <div class="alert alert-success fade show" role="alert">
+                                            <?php echo $_SESSION["success"];
+                                                  unset($_SESSION["success"]);
+                                            ;?>
+                                        </div>
+                                    <?php endif ;?>
+
+                                    <a href="./task_14.php">На главную</a>
                                 </div>
                             </div>
                         </div>
