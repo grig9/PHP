@@ -40,13 +40,11 @@
                                 <div class="form-group">
                                     <?php if(isset($_SESSION["success"])): ?>
                                         <div class="alert alert-success fade show" role="alert">
-                                            <?php echo $_SESSION["success"];
-                                                  unset($_SESSION["success"]);
-                                            ;?>
+                                            Здравствуйте, <?php echo $_SESSION["success"] ;?>.
                                         </div>
                                     <?php endif ;?>
 
-                                    <a href="./task_14.php">На главную</a>
+                                    <a  href="./task_15_handler.php" class="btn btn-info">Выйти</a>
                                 </div>
                             </div>
                         </div>

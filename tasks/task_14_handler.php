@@ -23,6 +23,6 @@ if(!password_verify($password, $result["hash"])) {
     exit;
 }
 
-$_SESSION["success"] = "Вы успешно авторизированы";
+$_SESSION["success"] = $email;
 
-header('Location: ./task_14a.php');
+header('Location: ./task_15.php');
