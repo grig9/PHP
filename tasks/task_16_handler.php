@@ -1,21 +1,27 @@
 <?php
-    var_dump($_FILES["image"]);
-  
-    $temp = pathinfo($_FILES["image"]["name"]);
-    //вытаскиваем расширение
-    $extension = $temp["extension"];
-    $new_name = uniqid('image_', true);
+
+  for($i = 0; $i < count($_FILES["image"]["name"]); $i++) {
+    upload_image(
+      $_FILES["image"]["name"][$i], 
+      $_FILES["image"]["tmp_name"][$i]
+    );
+  }
+
+  function upload_image($file, $tmp_name) {
+    $result = pathinfo($file);
+    //создаем уникальное имя и вытаскиваем расширение файла 
+    $filename = uniqid('image_', true) . "." . $result["extension"];
+    //перемещаем файл из временного хранилища по указанному пути
+    move_uploaded_file($tmp_name, "./images/". $filename);
     
-    $result = $new_name . "." . $extension;
+    insert_image_db("images", "image", $filename);
+  }
 
-    move_uploaded_file($_FILES["image"]["tmp_name"], "./images/". $result);
-
+  function insert_image_db($tablename, $column, $value) {
     include "connect_db.php";
-
-  
-
-    $sql = "INSERT INTO images (image) VALUES (:image)";
+    $sql = "INSERT INTO $tablename ($column) VALUES (?)";
     $statement = $pdo->prepare($sql);
-    $statement->execute(["image" => $result]);
+    $statement->execute([$value]);
+  }
 
-    header("Location: task_16.php");    
+  header("Location: task_16.php");    

@@ -44,8 +44,8 @@
                                 <div class="panel-content">
                                     <div class="form-group">
                                         <form enctype="multipart/form-data" action="task_16_handler.php" method="post">
-                                            <label class="form-label" for="images">Images</label>
-                                            <input type="file" name="image" id="images" class="form-control" multiple required>
+                                            <label class="form-label" for="image">Images</label>
+                                            <input type="file" name="image[]" id="image" class="form-control" multiple required>
 
                                             <button type="submit" class="btn btn-success mt-3">Загрузить</button>
                                         </form>
@@ -73,7 +73,7 @@
                                     <div class="row">
                                         <?php foreach($images as $image): ?>
                                             <div class="col-md-3 image">
-                                                <img src="./images/<?php echo $image["image"] ;?>" alt="some image">
+                                                <img src="./images/<?php echo $image["image"] ;?>" alt="some image" width="300px">
                                              </div>
                                         <?php endforeach ;?>
                                     </div>
