@@ -1,5 +1,5 @@
 <?php
-    include_once "connect_db.php";
+    include "connect_db.php";
 
     $sql = "SELECT * FROM task_7";
     $statement = $pdo->prepare($sql);
