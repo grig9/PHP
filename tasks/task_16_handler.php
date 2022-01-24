@@ -16,11 +16,11 @@
     insert_image_db("images", "image", $filename);
   }
 
-  function insert_image_db($tablename, $column, $value) {
+  function insert_image_db($tablename, $column, $image_name) {
     include "connect_db.php";
     $sql = "INSERT INTO $tablename ($column) VALUES (?)";
     $statement = $pdo->prepare($sql);
-    $statement->execute([$value]);
+    $statement->execute([$image_name]);
   }
 
   header("Location: task_16.php");    
